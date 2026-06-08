@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import {
   View,
   Text,
@@ -35,6 +35,18 @@ export default function RestaurantDetail() {
     0
   );
 
+  const hasSections = restaurant.menu.some(item => item.section);
+  const sections = useMemo(() => {
+    if (!hasSections) return null;
+    const map: Record<string, typeof restaurant.menu> = {};
+    restaurant.menu.forEach(item => {
+      const key = item.section ?? 'Other';
+      if (!map[key]) map[key] = [];
+      map[key].push(item);
+    });
+    return Object.entries(map);
+  }, [restaurant.menu, hasSections]);
+
   const add = (item: MenuItem) =>
     setCart(prev => ({ ...prev, [item.id]: (prev[item.id] ?? 0) + 1 }));
 
@@ -45,6 +57,39 @@ export default function RestaurantDetail() {
       else delete next[item.id];
       return next;
     });
+
+  const renderItem = (item: MenuItem) => (
+    <View key={item.id} style={styles.menuItem}>
+      <Image source={{ uri: item.image }} style={styles.menuImage} />
+      <View style={styles.menuInfo}>
+        <View style={styles.menuNameRow}>
+          <Text style={styles.menuName}>{item.name}</Text>
+          {item.popular && (
+            <View style={styles.popularTag}>
+              <Text style={styles.popularText}>Popular</Text>
+            </View>
+          )}
+        </View>
+        <Text style={styles.menuDesc} numberOfLines={2}>{item.description}</Text>
+        <View style={styles.menuBottom}>
+          <Text style={styles.menuPrice}>${item.price.toFixed(2)}</Text>
+          <View style={styles.qtyRow}>
+            {(cart[item.id] ?? 0) > 0 && (
+              <TouchableOpacity style={styles.qtyBtn} onPress={() => remove(item)}>
+                <Ionicons name="remove" size={16} color={Colors.orange} />
+              </TouchableOpacity>
+            )}
+            {(cart[item.id] ?? 0) > 0 && (
+              <Text style={styles.qtyText}>{cart[item.id]}</Text>
+            )}
+            <TouchableOpacity style={[styles.qtyBtn, styles.qtyBtnAdd]} onPress={() => add(item)}>
+              <Ionicons name="add" size={16} color={Colors.white} />
+            </TouchableOpacity>
+          </View>
+        </View>
+      </View>
+    </View>
+  );
 
   return (
     <SafeAreaView style={styles.safe}>
@@ -91,38 +136,17 @@ export default function RestaurantDetail() {
         {/* Menu */}
         <View style={styles.menuSection}>
           <Text style={styles.menuTitle}>Menu</Text>
-          {restaurant.menu.map(item => (
-            <View key={item.id} style={styles.menuItem}>
-              <Image source={{ uri: item.image }} style={styles.menuImage} />
-              <View style={styles.menuInfo}>
-                <View style={styles.menuNameRow}>
-                  <Text style={styles.menuName}>{item.name}</Text>
-                  {item.popular && (
-                    <View style={styles.popularTag}>
-                      <Text style={styles.popularText}>Popular</Text>
-                    </View>
-                  )}
-                </View>
-                <Text style={styles.menuDesc} numberOfLines={2}>{item.description}</Text>
-                <View style={styles.menuBottom}>
-                  <Text style={styles.menuPrice}>${item.price.toFixed(2)}</Text>
-                  <View style={styles.qtyRow}>
-                    {(cart[item.id] ?? 0) > 0 && (
-                      <TouchableOpacity style={styles.qtyBtn} onPress={() => remove(item)}>
-                        <Ionicons name="remove" size={16} color={Colors.orange} />
-                      </TouchableOpacity>
-                    )}
-                    {(cart[item.id] ?? 0) > 0 && (
-                      <Text style={styles.qtyText}>{cart[item.id]}</Text>
-                    )}
-                    <TouchableOpacity style={[styles.qtyBtn, styles.qtyBtnAdd]} onPress={() => add(item)}>
-                      <Ionicons name="add" size={16} color={Colors.white} />
-                    </TouchableOpacity>
-                  </View>
-                </View>
+
+          {hasSections && sections ? (
+            sections.map(([sectionName, items]) => (
+              <View key={sectionName}>
+                <Text style={styles.sectionHeader}>{sectionName}</Text>
+                {items.map(item => renderItem(item))}
               </View>
-            </View>
-          ))}
+            ))
+          ) : (
+            restaurant.menu.map(item => renderItem(item))
+          )}
         </View>
 
         <View style={{ height: 100 }} />
@@ -239,6 +263,18 @@ const styles = StyleSheet.create({
     fontWeight: '800',
     color: Colors.text,
     marginBottom: 14,
+  },
+  sectionHeader: {
+    fontSize: 15,
+    fontWeight: '700',
+    color: Colors.text,
+    backgroundColor: Colors.gray100,
+    paddingHorizontal: 12,
+    paddingVertical: 7,
+    borderRadius: 10,
+    marginBottom: 10,
+    marginTop: 6,
+    overflow: 'hidden',
   },
   menuItem: {
     flexDirection: 'row',

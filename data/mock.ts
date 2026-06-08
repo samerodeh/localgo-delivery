@@ -28,6 +28,7 @@ export type MenuItem = {
   price: number;
   image: string;
   popular?: boolean;
+  section?: string;
 };
 
 export type Order = {
@@ -46,6 +47,7 @@ export const categories: Category[] = [
   { id: 'all', label: 'All', icon: 'apps' },
   { id: 'burgers', label: 'Burgers', icon: 'fast-food' },
   { id: 'pizza', label: 'Pizza', icon: 'pizza' },
+  { id: 'grills', label: 'Grills', icon: 'flame' },
   { id: 'sushi', label: 'Sushi', icon: 'fish' },
   { id: 'tacos', label: 'Tacos', icon: 'nutrition' },
   { id: 'salads', label: 'Salads', icon: 'leaf' },
@@ -168,6 +170,109 @@ export const restaurants: Restaurant[] = [
     menu: [
       { id: 'm1', name: 'Lava Cake', description: 'Warm dark chocolate, vanilla ice cream, raspberry coulis', price: 9.99, image: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=400&q=80', popular: true },
       { id: 'm2', name: 'Cookie Dough Jar', description: 'Edible raw dough, chocolate chips, caramel drizzle', price: 8.49, image: 'https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=400&q=80' },
+    ],
+  },
+  {
+    id: '7',
+    name: 'Al Taib',
+    category: 'grills',
+    image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&q=80',
+    rating: 4.7,
+    reviewCount: 324,
+    deliveryTime: '20–35 min',
+    deliveryFee: '$2.49',
+    minOrder: '$12',
+    distance: '1.1 km',
+    badge: 'popular',
+    tags: ['Lebanese', 'Grills', 'Shawarma', 'Pizza', 'Manakish'],
+    address: '2125 Guy St, Montreal',
+    menu: [
+      // Create Your Bowl
+      { id: 'at_b1', section: 'Create Your Bowl', name: 'Create Your Bowl (500 G)', description: 'Pick up to 5 items of approximately 100 grams each.', price: 12.50, image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&q=80', popular: true },
+      { id: 'at_b2', section: 'Create Your Bowl', name: 'Create Your Bowl (1 Kg)', description: 'Pick up to 10 items of approximately 100 grams each.', price: 25.00, image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&q=80' },
+
+      // Pizza Slices
+      { id: 'at_ps1', section: 'Pizza Slices', name: 'Cheese Pizza Slice', description: 'Sauce, mozzarella.', price: 5.50, image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400&q=80' },
+      { id: 'at_ps2', section: 'Pizza Slices', name: 'Pepperoni Pizza Slice', description: 'Sauce, mozzarella, and pepperoni.', price: 6.50, image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400&q=80', popular: true },
+      { id: 'at_ps3', section: 'Pizza Slices', name: 'All Dressed Pizza Slice', description: 'Sauce, mozzarella, pepperoni, mushrooms, and green pepper.', price: 6.75, image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400&q=80' },
+      { id: 'at_ps4', section: 'Pizza Slices', name: 'Veggie Pizza Slice', description: 'Sauce, mozzarella, black olives, mushrooms, green peppers, and fresh tomatoes.', price: 6.50, image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400&q=80' },
+      { id: 'at_ps5', section: 'Pizza Slices', name: 'Chicken Pizza Slice', description: 'Sauce, mozzarella, chicken, and fresh tomatoes.', price: 6.75, image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400&q=80' },
+      { id: 'at_ps6', section: 'Pizza Slices', name: 'Mexican Pizza Slice', description: 'Sauce, mozzarella, spicy beef, fresh tomatoes, banana pepper, and onions.', price: 6.75, image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400&q=80' },
+      { id: 'at_ps7', section: 'Pizza Slices', name: 'Hawaiian Pizza Slice', description: 'Sauce, mozzarella, beef, and pineapple.', price: 6.50, image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400&q=80' },
+      { id: 'at_ps8', section: 'Pizza Slices', name: 'Spinach Pizza Slice', description: 'Sauce, mozzarella, spinach, and black olives.', price: 6.50, image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400&q=80' },
+      { id: 'at_ps9', section: 'Pizza Slices', name: 'Tuna Pizza Slice', description: 'Sauce, mozzarella, tuna, garlic, and fresh tomatoes.', price: 7.00, image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400&q=80' },
+
+      // Pizza
+      { id: 'at_p1', section: 'Pizza', name: 'Cheese Pizza', description: 'Sauce, mozzarella.', price: 15.18, image: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=400&q=80' },
+      { id: 'at_p2', section: 'Pizza', name: 'Pepperoni Pizza', description: 'Sauce, mozzarella, and pepperoni.', price: 17.94, image: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=400&q=80', popular: true },
+      { id: 'at_p3', section: 'Pizza', name: 'All Dressed Pizza', description: 'Sauce, mozzarella, pepperoni, mushrooms, and green pepper.', price: 19.32, image: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=400&q=80' },
+      { id: 'at_p4', section: 'Pizza', name: 'Veggie Pizza', description: 'Sauce, mozzarella, black olives, mushrooms, green peppers, and fresh tomatoes.', price: 19.32, image: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=400&q=80' },
+      { id: 'at_p5', section: 'Pizza', name: 'Chicken Pizza', description: 'Sauce, mozzarella, chicken, and fresh tomatoes.', price: 20.70, image: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=400&q=80' },
+      { id: 'at_p6', section: 'Pizza', name: 'Mexican Pizza', description: 'Sauce, mozzarella, spicy beef, fresh tomatoes, banana pepper, and onions.', price: 20.70, image: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=400&q=80' },
+      { id: 'at_p7', section: 'Pizza', name: 'Hawaiian Pizza', description: 'Sauce, mozzarella, beef, and pineapple.', price: 20.70, image: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=400&q=80' },
+      { id: 'at_p8', section: 'Pizza', name: 'Spinach Pizza', description: 'Sauce, mozzarella, spinach, and black olives.', price: 20.70, image: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=400&q=80' },
+      { id: 'at_p9', section: 'Pizza', name: 'Tuna Pizza', description: 'Sauce, mozzarella, tuna, garlic, and fresh tomatoes.', price: 22.08, image: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=400&q=80' },
+
+      // Manakish and Pies
+      { id: 'at_m1', section: 'Manakish and Pies', name: 'Zaatar Manakish', description: 'Thyme, sumac, and sesame seeds.', price: 4.50, image: 'https://images.unsplash.com/photo-1481070414801-51fd732d7184?w=400&q=80', popular: true },
+      { id: 'at_m2', section: 'Manakish and Pies', name: 'Cheese Manakish', description: 'Mozzarella and akawi cheese.', price: 7.00, image: 'https://images.unsplash.com/photo-1481070414801-51fd732d7184?w=400&q=80' },
+      { id: 'at_m3', section: 'Manakish and Pies', name: 'Zaatar and Cheese Manakish', description: 'Thyme, sumac, sesame seeds, mozzarella, and akawi cheese.', price: 6.00, image: 'https://images.unsplash.com/photo-1481070414801-51fd732d7184?w=400&q=80' },
+      { id: 'at_m4', section: 'Manakish and Pies', name: 'Kafta Manakish', description: 'Ground-beef, green peppers, and kafta spices.', price: 6.50, image: 'https://images.unsplash.com/photo-1481070414801-51fd732d7184?w=400&q=80' },
+      { id: 'at_m5', section: 'Manakish and Pies', name: 'Sojuk Manakish', description: 'Ground-beef, sujok spices, and tomatoes.', price: 11.99, image: 'https://images.unsplash.com/photo-1481070414801-51fd732d7184?w=400&q=80' },
+      { id: 'at_m6', section: 'Manakish and Pies', name: 'Lahmbajine Manakish', description: 'Ground-beef tomato puree, onions, and seven spices.', price: 7.50, image: 'https://images.unsplash.com/photo-1481070414801-51fd732d7184?w=400&q=80' },
+      { id: 'at_m7', section: 'Manakish and Pies', name: 'Lahmbajine and Cheese Manakish', description: 'Ground-beef tomato puree, onions, seven spices, and mozzarella.', price: 6.50, image: 'https://images.unsplash.com/photo-1481070414801-51fd732d7184?w=400&q=80' },
+      { id: 'at_m8', section: 'Manakish and Pies', name: 'Feta Manakish', description: 'Feta and mozzarella cheese and parsley.', price: 6.50, image: 'https://images.unsplash.com/photo-1481070414801-51fd732d7184?w=400&q=80' },
+      { id: 'at_m9', section: 'Manakish and Pies', name: 'Spinach Pie', description: 'Spinach, sumac, lemon, and onion.', price: 4.50, image: 'https://images.unsplash.com/photo-1481070414801-51fd732d7184?w=400&q=80' },
+      { id: 'at_m10', section: 'Manakish and Pies', name: 'Cheese Pie', description: 'Mozzarella and sesame seeds.', price: 5.00, image: 'https://images.unsplash.com/photo-1481070414801-51fd732d7184?w=400&q=80' },
+      { id: 'at_m11', section: 'Manakish and Pies', name: 'Half-Spinach / Half-Cheese Pie', description: 'Spinach, sumac, lemon, onion, and mozzarella.', price: 5.00, image: 'https://images.unsplash.com/photo-1481070414801-51fd732d7184?w=400&q=80' },
+      { id: 'at_m12', section: 'Manakish and Pies', name: 'Falafel Sandwich', description: 'Crispy falafel in fresh bread with vegetables and tahini.', price: 9.00, image: 'https://images.unsplash.com/photo-1596522354195-e84ae3c98731?w=400&q=80' },
+      { id: 'at_m13', section: 'Manakish and Pies', name: 'Feta Fromage', description: 'Feta cheese sandwich.', price: 7.50, image: 'https://images.unsplash.com/photo-1481070414801-51fd732d7184?w=400&q=80' },
+      { id: 'at_m14', section: 'Manakish and Pies', name: 'Sojok & Fromage', description: 'Sujok sausage and fromage cheese sandwich.', price: 8.50, image: 'https://images.unsplash.com/photo-1481070414801-51fd732d7184?w=400&q=80' },
+      { id: 'at_m15', section: 'Manakish and Pies', name: 'Shish Taouk (Poulet)', description: 'Marinated grilled chicken in fresh bread.', price: 11.99, image: 'https://images.unsplash.com/photo-1529692157254-04e20d5f70c9?w=400&q=80' },
+      { id: 'at_m16', section: 'Manakish and Pies', name: 'Shawarma (Boeuf)', description: 'Seasoned beef shawarma in fresh bread.', price: 11.99, image: 'https://images.unsplash.com/photo-1529692157254-04e20d5f70c9?w=400&q=80' },
+
+      // Grills
+      { id: 'at_g1', section: 'Grills', name: 'Shish Taouk Plate', description: 'Marinated grilled chicken skewers served with sides.', price: 15.00, image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400&q=80', popular: true },
+      { id: 'at_g2', section: 'Grills', name: 'Shawarma Beef Sandwich', description: 'Seasoned beef shawarma wrapped in fresh bread.', price: 8.75, image: 'https://images.unsplash.com/photo-1529692157254-04e20d5f70c9?w=400&q=80', popular: true },
+      { id: 'at_g3', section: 'Grills', name: 'Shish Taouk Sandwich', description: 'Marinated grilled chicken wrapped in fresh bread.', price: 8.75, image: 'https://images.unsplash.com/photo-1529692157254-04e20d5f70c9?w=400&q=80' },
+      { id: 'at_g4', section: 'Grills', name: 'Chicken Shawarma Trio', description: 'Served with a canned drink and a small potato.', price: 15.00, image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400&q=80' },
+      { id: 'at_g5', section: 'Grills', name: 'Shawarma Beef Plate', description: 'Seasoned beef shawarma served with sides.', price: 15.00, image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400&q=80' },
+      { id: 'at_g6', section: 'Grills', name: 'Falafel Plate', description: 'Crispy falafel served with hummus, salad, and bread.', price: 13.50, image: 'https://images.unsplash.com/photo-1596522354195-e84ae3c98731?w=400&q=80' },
+      { id: 'at_g7', section: 'Grills', name: 'Beef Shawarma Trio', description: 'Served with a canned drink and a small potato.', price: 15.00, image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400&q=80' },
+      { id: 'at_g8', section: 'Grills', name: 'Combo Shish Taouk & Shawarma Beef Plate', description: 'A combination of shish taouk and shawarma beef.', price: 15.00, image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400&q=80' },
+      { id: 'at_g9', section: 'Grills', name: '2 Chicken Shawarma Trio', description: 'Served with a canned drink and a small potato.', price: 18.99, image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400&q=80' },
+      { id: 'at_g10', section: 'Grills', name: 'Combo Chicken & Beef Shawarma Sandwich', description: 'Half chicken, half beef shawarma in fresh bread.', price: 8.75, image: 'https://images.unsplash.com/photo-1529692157254-04e20d5f70c9?w=400&q=80' },
+      { id: 'at_g11', section: 'Grills', name: 'Combo Chicken & Beef Shawarma Sandwich Trio', description: 'Served with a canned drink and a small potato.', price: 15.00, image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400&q=80' },
+      { id: 'at_g12', section: 'Grills', name: 'Steak', description: 'Grilled steak served with sides.', price: 15.00, image: 'https://images.unsplash.com/photo-1546964124-0cce460da6cb?w=400&q=80' },
+      { id: 'at_g13', section: 'Grills', name: 'Merguez', description: 'Spiced lamb and beef sausage, grilled and served with sides.', price: 15.00, image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400&q=80' },
+
+      // Sides
+      { id: 'at_s1', section: 'Sides', name: 'Hummus', description: 'Creamy chickpea dip with olive oil and paprika.', price: 4.50, image: 'https://images.unsplash.com/photo-1576300883254-9abfa58aa809?w=400&q=80', popular: true },
+      { id: 'at_s2', section: 'Sides', name: 'Poutine', description: 'Fries topped with cheese curds and gravy.', price: 12.00, image: 'https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=400&q=80' },
+      { id: 'at_s3', section: 'Sides', name: 'Fries', description: 'Crispy golden fries.', price: 5.00, image: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=400&q=80' },
+      { id: 'at_s4', section: 'Sides', name: 'Cheesecake Slice', description: 'Classic New York–style cheesecake slice.', price: 6.00, image: 'https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?w=400&q=80' },
+      { id: 'at_s5', section: 'Sides', name: 'Tabouleh', description: 'Fresh parsley, bulgur, tomato, and lemon dressing.', price: 4.50, image: 'https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=400&q=80' },
+      { id: 'at_s6', section: 'Sides', name: 'Fatoush', description: 'Crispy pita, tomatoes, cucumber, and sumac dressing.', price: 4.50, image: 'https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=400&q=80' },
+      { id: 'at_s7', section: 'Sides', name: 'Hot Potato', description: 'Seasoned potato, served hot.', price: 6.00, image: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=400&q=80' },
+      { id: 'at_s8', section: 'Sides', name: 'Basmati Rice', description: 'Fluffy long-grain basmati rice.', price: 4.50, image: 'https://images.unsplash.com/photo-1536304929831-ee1ca9d44906?w=400&q=80' },
+      { id: 'at_s9', section: 'Sides', name: 'Cabbage Salad', description: 'Fresh shredded cabbage with lemon dressing.', price: 4.50, image: 'https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=400&q=80' },
+      { id: 'at_s10', section: 'Sides', name: 'Baklava Patisserie', description: 'Layers of filo filled with chopped nuts and honey.', price: 3.50, image: 'https://images.unsplash.com/photo-1598110750624-2c4e5479ae61?w=400&q=80' },
+      { id: 'at_s11', section: 'Sides', name: 'Salad Bar 100g', description: 'Fresh salad bar selection, per 100g.', price: 2.50, image: 'https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=400&q=80' },
+      { id: 'at_s12', section: 'Sides', name: 'Poutine au Poulet', description: 'Poutine topped with grilled chicken.', price: 15.00, image: 'https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=400&q=80' },
+
+      // Drinks
+      { id: 'at_d1', section: 'Drinks', name: 'Coke', description: 'Classic Coca-Cola, chilled.', price: 2.00, image: 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400&q=80' },
+      { id: 'at_d2', section: 'Drinks', name: 'Diet Coke', description: 'Coca-Cola Diet, chilled.', price: 2.00, image: 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400&q=80' },
+      { id: 'at_d3', section: 'Drinks', name: 'Pepsi', description: 'Pepsi cola, chilled.', price: 2.00, image: 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400&q=80' },
+      { id: 'at_d4', section: 'Drinks', name: 'Diet Pepsi', description: 'Pepsi Diet, chilled.', price: 2.00, image: 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400&q=80' },
+      { id: 'at_d5', section: 'Drinks', name: 'Red Bull', description: 'Energy drink, 250 ml.', price: 4.00, image: 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400&q=80' },
+      { id: 'at_d6', section: 'Drinks', name: 'Apple Juice', description: 'Cold-pressed apple juice.', price: 4.50, image: 'https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=400&q=80' },
+      { id: 'at_d7', section: 'Drinks', name: 'Perrier', description: 'Sparkling natural mineral water.', price: 3.00, image: 'https://images.unsplash.com/photo-1564419320461-6870880221ad?w=400&q=80' },
+      { id: 'at_d8', section: 'Drinks', name: 'Water', description: 'Still mineral water.', price: 2.00, image: 'https://images.unsplash.com/photo-1564419320461-6870880221ad?w=400&q=80' },
+      { id: 'at_d9', section: 'Drinks', name: 'Fanta', description: 'Orange Fanta, chilled.', price: 2.00, image: 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400&q=80' },
+      { id: 'at_d10', section: 'Drinks', name: 'Sprite', description: 'Sprite lemon-lime, chilled.', price: 2.00, image: 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400&q=80' },
+      { id: 'at_d11', section: 'Drinks', name: '7 Up', description: '7 Up lemon-lime soda, chilled.', price: 2.00, image: 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400&q=80' },
+      { id: 'at_d12', section: 'Drinks', name: 'Ayran', description: 'Chilled salted yogurt drink.', price: 5.50, image: 'https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=400&q=80' },
     ],
   },
 ];
