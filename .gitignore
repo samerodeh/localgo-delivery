@@ -1,5 +1,12 @@
-node_modules/
-.expo/
-dist/
+# Xcode
+xcuserdata/
+*.xcuserstate
+*.xccheckout
+.build/
+DerivedData/
+
+# macOS
 .DS_Store
-*.log
+
+# SPM
+.swiftpm/
